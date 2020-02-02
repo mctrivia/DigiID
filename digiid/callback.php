@@ -30,7 +30,7 @@ if($post_data!==null) {
 
 //check if valid signature
 if (!$digiid->isMessageSignatureValidSafe(@$variables['address'], @$variables['signature'], @$variables['uri'])) {
-	throw new \Error("Addresses Don't Match");
+	header("HTTP/1.0 400 Bad Request");die();	//lets wallet know things failed
 }
 
 //check if nonce is in database
